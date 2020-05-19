@@ -1,0 +1,57 @@
+﻿
+@page "/operacionesdata"
+@using OperacionesArit.Data
+
+<h3>OperacionesData</h3>
+<EditForm Model="Operaciones" OnValidSubmit="Calcular">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <div class="form-group">
+        <p class="PrimerNumero">
+            Primer Numero: <InputNumber @bind-Value="Operaciones.PrimerNumero" class="form-control"  />
+        </p>
+        <p class="SegundoNumero">
+            Segundo Numero:<InputNumber @bind-Value="Operaciones.SegundoNumero" class="form-control" />
+        </p>
+        <p class="ResultadosSuma">
+            La Suma de los Numeros Es:<InputNumber @bind-Value="Operaciones.ResultadosSuma" class="from-control" readonly="true" />
+        </p>
+        <p class="ResultadosResta">
+            La Resta de los Numeros Es:<InputNumber @bind-Value="Operaciones.ResultadosResta" class="from-control"  readonly="true"/>
+
+
+
+        </p>
+        <p class="ResultadosMultiplicacion">
+           El Multiplo de los Numeros Es:<InputNumber @bind-Value="Operaciones.ResultadosMultiplicacion" class="from-control"  readonly="true"/>
+
+
+
+        </p>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success" @onclick="Calcular">
+            Calcular Operaciones
+        </button>
+       
+
+    </div>
+
+
+</EditForm>
+
+@code {
+    OperadoresAritmeticos Operaciones = new OperadoresAritmeticos();
+
+    public void Calcular()
+    {
+        decimal numero1 = Operaciones.PrimerNumero;
+        decimal numero2 = Operaciones.SegundoNumero;
+
+        Operaciones.ResultadosSuma = numero1 + numero2;
+        Operaciones.ResultadosResta = numero1 - numero2;
+        Operaciones.ResultadosMultiplicacion = numero1 * numero2;
+
+    }
+
+}
