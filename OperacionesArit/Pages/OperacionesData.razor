@@ -2,8 +2,8 @@
 @page "/operacionesdata"
 @using OperacionesArit.Data
 
-<h3>OperacionesData</h3>
-<EditForm Model="Operaciones" OnValidSubmit="Calcular">
+<h1>Operaciones Aritmetica</h1>
+<EditForm Model="Operaciones" OnValidSubmit="Suma">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     <div class="form-group">
@@ -14,7 +14,7 @@
             Segundo Numero:<InputNumber @bind-Value="Operaciones.SegundoNumero" class="form-control" />
         </p>
         <p class="ResultadosSuma">
-            La Suma de los Numeros Es:<InputNumber @bind-Value="Operaciones.ResultadosSuma" class="from-control" readonly="true" />
+            La Suma de los Numeros Es:<InputNumber @bind-Value="Operaciones.ResultadosSuma" class="from-control" readonly="true"  />
         </p>
         <p class="ResultadosResta">
             La Resta de los Numeros Es:<InputNumber @bind-Value="Operaciones.ResultadosResta" class="from-control"  readonly="true"/>
@@ -45,13 +45,38 @@
 
     public void Calcular()
     {
+      //  decimal numero1 = Operaciones.PrimerNumero;
+      //  decimal numero2 = Operaciones.SegundoNumero;
+
+      //  Operaciones.ResultadosSuma = numero1 + numero2;
+     //   Operaciones.ResultadosResta = numero1 - numero2;
+      //  Operaciones.ResultadosMultiplicacion = numero1 * numero2;
+        Suma();
+        Resta();
+        Multiplicacion();
+
+
+    }
+     public void Resta() {
         decimal numero1 = Operaciones.PrimerNumero;
         decimal numero2 = Operaciones.SegundoNumero;
 
-        Operaciones.ResultadosSuma = numero1 + numero2;
-        Operaciones.ResultadosResta = numero1 - numero2;
-        Operaciones.ResultadosMultiplicacion = numero1 * numero2;
 
+    Operaciones.ResultadosResta = numero1 - numero2;
     }
 
+     public void Multiplicacion() {
+        decimal numero1 = Operaciones.PrimerNumero;
+        decimal numero2 = Operaciones.SegundoNumero;
+
+
+    Operaciones.ResultadosMultiplicacion = numero1 * numero2;
+    }
+    public void Suma() {
+        decimal numero1 = Operaciones.PrimerNumero;
+        decimal numero2 = Operaciones.SegundoNumero;
+
+
+    Operaciones.ResultadosSuma = numero1 + numero2;
+    }
 }
